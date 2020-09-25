@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os/exec"
 )
@@ -14,4 +15,11 @@ func getData(dataChan chan []byte) {
 	}
 
 	dataChan <- data
+}
+
+func main() {
+	dataChan := make(chan []byte)
+
+	getData(dataChan)
+	fmt.Println(<-dataChan)
 }
